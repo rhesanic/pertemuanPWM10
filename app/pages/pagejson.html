@@ -1,0 +1,58 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set character encoding -->
+  <meta charset="utf-8">
+  <!-- Set the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <!-- Set title -->
+  <title>Post 3</title>
+  <!-- Request styles -->
+  <link rel="stylesheet" href="/app/style/main.css" />
+</head>
+<body>
+<header>
+    <h1>wallpaper</h1>
+  </header>
+  <main>
+<script type="text/javascript">
+	$.ajax({
+      url : 'https://jsonplaceholder.typicode.com/posts',
+      dataType : 'json',
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (xhr, status, msg) {
+        alert('Status: ' + status + "\n" + msg);
+      }
+    })
+	 
+$(document).ready(function (data) {
+    var html = '<table class="table table-striped">';
+    html += '<tr>';
+    var flag = 0;
+    $.each(data[0], function(index, value){
+        html += '<th>'+index+'</th>';
+    });
+    html += '</tr>';
+     $.each(data, function(index, value){
+         html += '<tr>';
+        $.each(value, function(index2, value2){
+            html += '<td>'+value2+'</td>';
+        });
+        html += '<tr>';
+     });
+     html += '</table>';
+     $('body').html(html);
+});
+</script>
+ </main>
+  <footer>
+    <a href="/app/index.html">Home</a>
+  </footer>
+</body>
+</html>
